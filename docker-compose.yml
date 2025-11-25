@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres
+    container_name: orders-managment-db
+    environment:
+      - POSTGRES_DB=orders-managment-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
