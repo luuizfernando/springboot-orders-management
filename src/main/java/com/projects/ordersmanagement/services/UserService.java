@@ -12,29 +12,29 @@ import com.projects.ordersmanagement.repositories.UserRepository;
 public class UserService {
     
     @Autowired
-    private UserRepository userRepository;
+    private UserRepository repository;
 
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        return repository.findAll();
     }
 
     public User getUserById(Long id) {
-        return userRepository.findById(id).orElse(null);
+        return repository.findById(id).orElse(null);
     }
 
     public User insertUser(User user) {
-        return userRepository.save(user);
+        return repository.save(user);
     }
 
     public void deleteUser(Long id) {
-        userRepository.deleteById(id);
+        repository.deleteById(id);
     }
 
     public User updateUser(Long id, User u) {
         try {
-            User user = userRepository.findById(id).orElse(null);
+            User user = repository.findById(id).orElse(null);
             updateData(user, u);
-            return userRepository.save(user);
+            return repository.save(user);
         } catch (Exception e) {
             throw new RuntimeException("Error updating user", e);
         }
